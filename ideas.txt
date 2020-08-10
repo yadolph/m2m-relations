@@ -1,0 +1,20 @@
+>>> from articles.models import Article, Scope, ScopeAssign
+
+>>> ar = Article.objects.filter(title__contains = 'Ученые').first()
+>>> ar
+<Article: Ученые доказали вред периодического курения>
+>>> ar.id
+2
+
+>>> sc = ScopeAssign.objects.filter(article_id = ar.id)
+>>> sc
+<QuerySet [<ScopeAssign: ScopeAssign object (2)>]>
+
+
+>>> sc.is_main
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'is_main'
+>>> sc.first().is_main
+True
+>>>
